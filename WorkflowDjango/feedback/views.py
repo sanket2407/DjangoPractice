@@ -1,12 +1,30 @@
 from django.shortcuts import render
+from .forms import FeedBackForm
 
 # Create your views here.
 
 def feedBackView(request):
 
 	title = "FeedBack Form"
+	form = FeedBackForm(request.POST or None)
+
+	# do something with request
+	if request.method == "POST":
+		print request.POST
+	
+	if form.is_valid():	
+		# create instance
+		instance = form.save(commit=False)
+
+		print instance.email
+		print instance.feedback
+
+		# store data in database
+		instance.save()
+
 	context = {
-		"title" : title
+		"title" : title,
+		"form" : form,
 	}
 
 	return render(request, "feedback.html", context)

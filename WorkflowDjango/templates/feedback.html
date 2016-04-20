@@ -1,3 +1,11 @@
 <H1>
-{{ title }}
+{{ title }} 
 </H1>
+
+<form method = "POST" action = ""> {% csrf_token %}  <!--for secured POST call.-->
+
+{{ form }}
+
+<input type="submit" value="send"/>
+
+</form>
