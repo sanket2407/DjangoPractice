@@ -12,6 +12,11 @@ def feedBackView(request):
 	if request.method == "POST":
 		print request.POST
 	
+	context = {
+		"title" : title,
+		"form" : form,
+	}
+
 	if form.is_valid():	
 		# create instance
 		instance = form.save(commit=False)
@@ -22,9 +27,9 @@ def feedBackView(request):
 		# store data in database
 		instance.save()
 
-	context = {
-		"title" : title,
+		context = {
+		"title" : "Thank you for feedback",
 		"form" : form,
-	}
+		}	
 
 	return render(request, "feedback.html", context)
