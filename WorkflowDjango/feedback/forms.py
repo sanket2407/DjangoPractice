@@ -6,4 +6,4 @@ class FeedBackForm(forms.ModelForm):
 	
 	class Meta:
 		model = FeedBack
-		fields = ['email']
+		fields = ['email', 'feedback']
